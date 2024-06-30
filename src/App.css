@@ -1,8 +1,7 @@
 #root {
-  max-width: 1280px;
+
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
 }
 
 .logo {
@@ -39,4 +38,56 @@
 
 .read-the-docs {
   color: #888;
+}
+.btn-primary {
+  background-color: #2ba5da !important;
+}
+.card:hover {
+  box-shadow: 0px 0px 10px 2px #2ba5daaa;
+}
+
+.abnormalLabel {
+  color: #ffc105;
+}
+.btn-warning {
+  color: white;
+}
+.alert {
+  position: absolute;
+  top: -10%;
+  z-index: 11000;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.alert > .btn-close {
+  transform: scale(0.6);
+  margin-top: 2px;
+}
+
+
+.NoteComponent:hover {
+  box-shadow: 0px 0px 5px 2px #ffc10733;
+}
+.NoteComponentDescription {
+  height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.heroGifAndFormContainer > div {
+  width: 35%;
+}
+
+.heroGifAndFormContainer > img {
+  top: 24%;
+  left: 46.4%;
+}
+.dropdown-item:focus,
+.dropdown-item:hover,
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #ffc105 !important;
+  color: #000;
 }

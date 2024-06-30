@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import About from "./components/About";
+import NoteState from "./context/notes/NoteState";
+import YourNotes from "./components/YourNotes";
+import AddNewNote from "./components/AddNewNote";
+import ViewNote from "./components/NoteView";
+import LoadingBar from "react-top-loading-bar";
+import NoteContext from "./context/notes/NoteContext";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <NoteState>
+      <AppContent />
+    </NoteState>
+  );
 }
 
-export default App
+function AppContent() {
+  const context = useContext(NoteContext);
+  const { progress } = context;
+
+  return (
+    <Router>
+      <LoadingBar color="#2ba5da" progress={progress} />
+      <Navbar />
+      <div className="container contentcontainer my-3" style={{ maxWidth: "1290px" }}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route path="/your-notes" element={<YourNotes />} />
+          <Route path="/add-new-note" element={<AddNewNote />} />
+          <Route path="/view-note" element={<ViewNote />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
